@@ -1,0 +1,23 @@
+.table {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--td-spacer-2);
+}
+
+.table-header,
+.table-body {
+  width: 75vw;
+  display: flex;
+  justify-content: space-around;
+}
+
+.table-header {
+  font-weight: bold;
+  font-size: var(--td-font-size-l);
+}
+
+.table-text {
+  width: 25vw;
+  text-align: center;
+}

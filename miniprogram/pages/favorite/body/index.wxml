@@ -1,0 +1,76 @@
+<t-message id="t-message" />
+<t-popup
+  bind:visible-change="popupHideHandle"
+  placement="bottom"
+  style="height: 75vw;"
+  visible="{{isShowPopup}}"
+>
+  <view class="header">
+    <view class="title">保存词汇表</view>
+  </view>
+  <view class="popup-body">
+    <t-input
+      bindchange="saveNameChangeHandle"
+      borderless="{{true}}"
+      label="名称"
+      value="{{saveName}}"
+    />
+    <view class="save-buttons">
+      <t-button bindtap="popupHideHandle">取消</t-button>
+      <t-button
+        bindtap="saveHandle"
+        theme="primary"
+      >保存</t-button>
+    </view>
+  </view>
+</t-popup>
+<view class="page">
+  <t-navbar
+    left-arrow="{{true}}"
+    title="宝藏单词库"
+  />
+  <view class="page-body">
+    <t-tabs
+      bindchange="tabChangeHandle"
+      value="{{tabIndex}}"
+    >
+      <t-tab-panel
+        label="{{item}}"
+        value="{{index}}"
+        wx:for="{{tabOptions}}"
+        wx:key="option"
+      />
+    </t-tabs>
+    <t-cell
+      bordered="{{false}}"
+      catchtap="itemTapHandle"
+      data-index="{{index}}"
+      description="{{item[1][0]+'  '+wordListTitle[item[1][1]]}}"
+      hover="{{true}}"
+      title="{{cardsDisplay[index][1][0]}}"
+      wx:for="{{favoriteDisplay}}"
+      wx:key="favorite"
+    >
+      <t-button
+        catchtap="itemDeleteHandle"
+        data-index="{{item[0]}}"
+        icon="close"
+        shape="circle"
+        slot="right-icon"
+        theme="danger"
+        variant="text"
+      />
+    </t-cell>
+    <t-fab wx:if="{{favoriteDisplay.length!==0}}">
+      <view class="fab">
+        <t-button
+          bindtap="popupShowHandle"
+          icon="save"
+          shape="circle"
+          size="large"
+          theme="primary"
+        ></t-button>
+      </view>
+    </t-fab>
+  </view>
+</view>

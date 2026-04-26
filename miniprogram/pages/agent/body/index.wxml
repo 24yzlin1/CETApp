@@ -1,0 +1,36 @@
+<view class="page">
+  <t-navbar left-arrow="{{true}}" />
+  <view class="page-body">
+    <view class="chat-body">
+      <view
+        wx:for="{{historyDisplay}}"
+        wx:key="history"
+      >
+        <t-chat-message
+          content="{{item.content}}"
+          placement="{{item.role==='user'?'right':'left'}}"
+          role="{{item.role}}"
+          wx:if="{{item.role!=='system'}}"
+        ></t-chat-message>
+      </view>
+      <t-chat-message
+        animation="moving"
+        placement="left"
+        role="assistent"
+        status="pending"
+        wx:if="{{loading}}"
+      ></t-chat-message>
+    </view>
+    <t-fab>
+      <view class="fab">
+        <t-button
+          bindtap="sendHandle"
+          disabled="{{loading}}"
+          icon="chat-bubble"
+          shape="circle"
+          size="large"
+        ></t-button>
+      </view>
+    </t-fab>
+  </view>
+</view>
