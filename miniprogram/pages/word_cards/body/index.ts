@@ -158,6 +158,10 @@ Component({
       });
     },
 
+    agentHandle() {
+      wx.navigateTo({ url: "/pages/agent/agent" });
+    },
+
     playAudioHandle(e: { currentTarget: { dataset: { text: string } } }) {
       playAudio(e.currentTarget.dataset.text);
     },

@@ -60,6 +60,12 @@ Component({
 
     // 进入下一关处理函数
     nextHandle() {
+      if (this.data.mode === 0) {
+        this.init();
+        this.setData({ level: 0 });
+        return;
+      }
+
       // 如果是第一关，记录游戏开始时间
       if (this.data.level === -1) {
         this.setData({ start: new Date().getTime() });
@@ -70,11 +76,6 @@ Component({
         level: this.data.level + 1,
         duration: new Date().getTime() - this.data.start,
       });
-
-      if (this.data.mode === 0) {
-        this.init();
-        this.setData({ level: 0 });
-      }
     },
 
     // 玩家选择选项处理函数

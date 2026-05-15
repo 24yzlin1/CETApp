@@ -5,8 +5,8 @@
   style="height: 75vw;"
   visible="{{isShowPopup}}"
 >
-  <view class="header">
-    <view class="title">{{tapOptions[tapIndex]}}选择</view>
+  <view class="popup-header">
+    <view class="popup-title">{{tapOptions[tapIndex]}}选择</view>
   </view>
   <view>
     <t-radio-group

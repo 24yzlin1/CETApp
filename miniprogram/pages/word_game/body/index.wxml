@@ -5,8 +5,8 @@
   style="height: 75vw;"
   visible="{{isShowPopup}}"
 >
-  <view class="header">
-    <view class="title">游戏模式</view>
+  <view class="popup-header">
+    <view class="popup-title">游戏模式</view>
   </view>
   <view>
     <t-radio-group

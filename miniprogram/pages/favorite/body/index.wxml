@@ -5,8 +5,8 @@
   style="height: 75vw;"
   visible="{{isShowPopup}}"
 >
-  <view class="header">
-    <view class="title">保存词汇表</view>
+  <view class="popup-header">
+    <view class="popup-title">保存词汇表</view>
   </view>
   <view class="popup-body">
     <t-input

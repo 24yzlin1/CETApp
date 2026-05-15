@@ -8,13 +8,13 @@
   gap: var(--td-spacer-4);
 }
 
-.header {
+.popup-header {
   display: flex;
   align-items: center;
   height: 116rpx;
 }
 
-.title {
+.popup-title {
   flex: 1;
   text-align: center;
   font-weight: 600;

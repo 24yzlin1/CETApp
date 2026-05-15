@@ -1,4 +1,5 @@
 import {
+  ChatSessionData,
   FavoriteData,
   FavoriteMetadata,
   HistoryData,
@@ -343,5 +344,10 @@ export const defaultGlobalData: string = JSON.stringify({
   },
   mistake: {
     list: new Array<MistakeData>(),
+  },
+  agent: {
+    memory:
+      "用户偏好简单场景化学英语，只学高频实用词汇、核心语法；喜欢短句拆解、例句带用法，爱积累万能句型；讲解不用复杂术语，纠错温和，需要定期复盘巩固，不喜欢生僻内容和枯燥理论。",
+    sessions: new Array<ChatSessionData>(),
   },
 });

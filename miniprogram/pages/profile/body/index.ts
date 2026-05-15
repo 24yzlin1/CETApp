@@ -187,6 +187,9 @@ Component({
         nickName: app.globalData.user.nickName, // 用户昵称
         listIndex: app.globalData.schedule.listIndex, // 单词列表索引
         groupSize: app.globalData.schedule.groupSize, // 每组单词数量
+        llmUrl: app.globalData.user.llmUrl,
+        llmKey: app.globalData.user.llmKey,
+        llmModel: app.globalData.user.llmModel,
       });
     },
   },

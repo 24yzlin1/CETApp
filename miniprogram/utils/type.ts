@@ -108,3 +108,12 @@ export type GameLevelData = [
 export type MistakeMetadata = [addDate: string, card: WordCard];
 
 export type MistakeData = [level: GameLevelData, metadata: MistakeMetadata];
+
+export type ChatMessage = [role: string, content: string];
+
+export type ChatSessionData = [
+  title: string,
+  addDate: string,
+  addTime: number,
+  messages: ChatMessage[],
+];
