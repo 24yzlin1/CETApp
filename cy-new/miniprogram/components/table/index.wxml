@@ -1,0 +1,8 @@
+<view class="table">
+    <view class="table-header">
+        <view class="table-text" wx:for="{{headers}}" wx:key="header">{{item}}</view>
+    </view>
+    <view class="table-body">
+        <view class="table-text" wx:for="{{bodys}}" wx:key="body">{{item}}</view>
+    </view>
+</view>

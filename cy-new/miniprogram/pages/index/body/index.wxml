@@ -1,0 +1,94 @@
+<t-message id="t-message" />
+<view class="page">
+  <t-navbar title="单词奇遇站">
+    <t-avatar
+      bindtap="avatarTapHandle"
+      hide-on-load-failed="{{true}}"
+      icon="user"
+      image="{{avatarUrl}}"
+      size="36px"
+      slot="left"
+    />
+  </t-navbar>
+  <view class="page-body">
+    <view class="clock-in-card">
+      <view class="count-down">
+        <view>距离今天结束还有：</view>
+        <t-count-down
+          format="HH:mm:ss:SSS"
+          millisecond="{{true}}"
+          size="large"
+          time="{{countDown}}"
+        />
+      </view>
+      <view class="welcome-message">{{welcomeMessage}}</view>
+      <view class="clock-in-text">{{isClockIn?"今日单词打卡完成啦～":"今日还没打卡呢，快学单词～"}}</view>
+      <view class="clock-in-buttons">
+        <t-button
+          bindtap="clockInTapHandle"
+          data-todo="{{1}}"
+          theme="primary"
+        >打卡</t-button>
+        <t-button
+          bindtap="clockInTapHandle"
+          data-todo="{{0}}"
+        >预览</t-button>
+      </view>
+    </view>
+    <t-cell
+      bordered="{{false}}"
+      catchtap="itemTapHandle"
+      data-target="{{index}}"
+      hover="{{true}}"
+      left-icon="{{item[0]}}"
+      title="{{item[1]}}"
+      wx:for="{{listItems}}"
+      wx:key="item"
+    />
+    <view wx:if="{{userCardGroups.length!==0}}">
+      <t-divider
+        align="left"
+        content="用户词汇表"
+        dashed="{{true}}"
+      />
+      <t-cell
+        bordered="{{false}}"
+        catchtap="userCardGroupsTapHandle"
+        data-target="{{index}}"
+        description="{{item[1]}}"
+        hover="{{true}}"
+        left-icon="book"
+        title="{{item[0]}}"
+        wx:for="{{userCardGroups}}"
+        wx:key="userCard"
+      >
+        <t-button
+          catchtap="userCardGroupsDeleteHandle"
+          data-index="{{index}}"
+          icon="close"
+          shape="circle"
+          slot="right-icon"
+          theme="danger"
+          variant="text"
+        />
+      </t-cell>
+    </view>
+    <view>
+      <t-divider
+        align="left"
+        content="内置词汇表"
+        dashed="{{true}}"
+      />
+      <t-cell
+        bordered="{{false}}"
+        catchtap="builtInCardsTapHandle"
+        data-target="{{index}}"
+        hover="{{true}}"
+        left-icon="book"
+        title="{{item}}"
+        wx:for="{{wordListTitle}}"
+        wx:key="title"
+      />
+    </view>
+  </view>
+</view>

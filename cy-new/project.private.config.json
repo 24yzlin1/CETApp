@@ -1,0 +1,20 @@
+{
+  "description": "CETApp 私有配置",
+  "projectname": "CETApp",
+  "setting": {
+    "compileHotReLoad": true,
+    "urlCheck": false,
+    "skylineRenderEnable": false,
+    "autoAudits": false,
+    "useApiHook": true,
+    "useApiHostProcess": true,
+    "showShadowRootInWxmlPanel": false,
+    "useStaticServer": false,
+    "useLanDebug": false,
+    "showES6CompileOption": false,
+    "bigPackageSizeSupport": false,
+    "checkInvalidKey": true,
+    "ignoreDevUnusedFiles": true
+  },
+  "libVersion": "3.10.2"
+}

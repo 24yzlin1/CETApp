@@ -1,0 +1,9 @@
+.mistake-card {
+  margin: var(--td-spacer-2) 0;
+}
+
+.word {
+  margin: var(--td-spacer) 0;
+  font-size: var(--td-font-size-xl);
+  font-weight: bold;
+}

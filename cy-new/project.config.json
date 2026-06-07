@@ -1,0 +1,52 @@
+{
+  "description": "CETApp - 四六级英语学习小程序",
+  "miniprogramRoot": "miniprogram/",
+  "compileType": "miniprogram",
+  "setting": {
+    "useCompilerPlugins": ["typescript"],
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "postcss": false,
+    "minified": true,
+    "enhance": true,
+    "showShadowRootInWxmlPanel": false,
+    "packNpmRelationList": [
+      {
+        "packageJsonPath": "./package.json",
+        "miniprogramNpmDistDir": "./miniprogram/"
+      }
+    ],
+    "ignoreUploadUnusedFiles": true,
+    "compileHotReLoad": true,
+    "skylineRenderEnable": false,
+    "es6": true,
+    "uglifyFileName": false,
+    "uploadWithSourceMap": true,
+    "packNpmManually": true,
+    "minifyWXSS": true,
+    "minifyWXML": true,
+    "localPlugins": false,
+    "condition": false,
+    "swc": false,
+    "disableSWC": true,
+    "disableUseStrict": false
+  },
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
+  "condition": {},
+  "srcMiniprogramRoot": "miniprogram/",
+  "editorSetting": {
+    "tabIndent": "insertSpaces",
+    "tabSize": 2
+  },
+  "libVersion": "3.10.2",
+  "packOptions": {
+    "ignore": [],
+    "include": []
+  },
+  "appid": "wx",
+  "projectname": "CETApp"
+}
