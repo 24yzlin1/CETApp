@@ -64,6 +64,9 @@
           value="{{level}}"
         />
       </view>
+      <view class="game-tips {{tipsType}}" wx:if="{{showTips}}">
+        {{tipsContent}}
+      </view>
       <view class="game-card">
         <view class="bg">
           <image src="/pages/images/game-bg.gif" mode=""/>
@@ -79,16 +82,16 @@
         <t-cell-group
           theme="card"
         >
-        <t-cell
-          t-class="{{ showAnswer ? (index === correctIndex ? 'correct-cell' : (index === chosenIndex ? 'wrong-cell' : 'custom-cell')) : 'custom-cell' }}"
-          bindtap="{{!isChosen ? 'chooseHandle' : ''}}"
-          bordered="{{false}}"
-          data-index="{{index}}"
-          hover="{{!isChosen}}"
-          title="{{item}}"
-          wx:for="{{levels[level][3]}}"
-          wx:key="option"
-        />
+          <t-cell
+            t-class="{{ showAnswer ? (index === correctIndex ? 'correct-cell' : (index === chosenIndex ? 'wrong-cell' : 'custom-cell')) : 'custom-cell' }}"
+            bindtap="{{!isChosen ? 'chooseHandle' : ''}}"
+            bordered="{{false}}"
+            data-index="{{index}}"
+            hover="{{!isChosen}}"
+            title="{{item}}"
+            wx:for="{{levels[level][3]}}"
+            wx:key="option"
+          />
         </t-cell-group>
       </view>
     </view>

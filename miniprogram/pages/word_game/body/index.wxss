@@ -13,6 +13,31 @@
   object-fit: cover;
 }
 
+.game-tips {
+  position: fixed;
+  top: 160rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+  margin: 0;
+  padding: 16rpx 32rpx;
+  width: 80%;
+  text-align: center;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  box-sizing: border-box;
+}
+
+.game-tips.success {
+  background-color: rgba(72, 187, 120, 0.9);
+  color: white;
+}
+
+.game-tips.error {
+  background-color: rgba(245, 108, 108, 0.9);
+  color: white;
+}
+
 .correct-cell {
   background-color: rgba(72, 187, 120, 0.5) !important;
   color: white;
