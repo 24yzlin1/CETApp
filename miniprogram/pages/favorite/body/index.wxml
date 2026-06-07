@@ -30,6 +30,33 @@
     title="宝藏单词库"
   />
   <view class="page-body">
+  <view class="favorite-banner">
+
+  <view class="favorite-title">
+    ⭐ 宝藏单词库
+  </view>
+
+  <view class="favorite-sub">
+    收藏值得反复记忆的单词
+  </view>
+
+</view>
+
+<view class="favorite-stats">
+
+  <view class="gold-card">
+    📖 收藏单词
+  </view>
+
+  <view class="gold-card">
+    ⭐ 词库数量
+  </view>
+
+  <view class="gold-card">
+    🔥 学习热度
+  </view>
+
+</view>
     <t-tabs
       bindchange="tabChangeHandle"
       value="{{tabIndex}}"

@@ -4,6 +4,33 @@
     title="单词成长记"
   />
   <view class="page-body">
+  <view class="growth-banner">
+
+  <view class="growth-title">
+    📈 单词成长记
+  </view>
+
+  <view class="growth-sub">
+    每一次学习都值得记录
+  </view>
+
+</view>
+
+<view class="dashboard">
+
+  <view class="dashboard-card">
+    🔥 连续打卡
+  </view>
+
+  <view class="dashboard-card">
+    📚 累计学习
+  </view>
+
+  <view class="dashboard-card">
+    🚀 成长值
+  </view>
+
+</view>
     <view
       class="history-card"
       wx:for="{{history}}"

@@ -7,3 +7,70 @@
   font-size: var(--td-font-size-xl);
   font-weight: bold;
 }
+page {
+  background-image:
+    linear-gradient(
+      rgba(15,23,42,.55),
+      rgba(15,23,42,.55)
+    ),
+    url('/assets/images/bg-mistake.jpg');
+
+  background-size: cover;
+  background-position: center;
+}
+
+.page-body {
+  padding: 20rpx;
+}
+
+.mistake-banner {
+  border-radius: 32rpx;
+  padding: 40rpx;
+  margin-bottom: 24rpx;
+
+  background: rgba(255,255,255,.18);
+  backdrop-filter: blur(18px);
+}
+
+.banner-title {
+  color: white;
+  font-size: 44rpx;
+  font-weight: bold;
+}
+
+.banner-subtitle {
+  color: rgba(255,255,255,.9);
+  margin-top: 12rpx;
+}
+
+.banner-count {
+  margin-top: 20rpx;
+  color: white;
+  font-size: 34rpx;
+}
+
+.mistake-stats {
+  display: flex;
+  gap: 16rpx;
+  margin-bottom: 24rpx;
+}
+
+.stat-card {
+  flex: 1;
+  text-align: center;
+  padding: 24rpx;
+
+  border-radius: 24rpx;
+
+  background: rgba(255,255,255,.14);
+  backdrop-filter: blur(15px);
+}
+
+.stat-icon {
+  font-size: 42rpx;
+}
+
+.stat-text {
+  color: white;
+  margin-top: 10rpx;
+}
