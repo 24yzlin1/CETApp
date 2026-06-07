@@ -26,6 +26,7 @@ Component({
     start: 0, // 游戏开始时间戳
     duration: 0, // 游戏进行时间（毫秒）
     isShowPopup: false, // 是否显示弹窗
+    showAnswer: false, // 显示正确答案
   },
 
   // 组件生命周期
@@ -38,7 +39,6 @@ Component({
       this.setData({
         cards: app.tempData.wordGame.cards,
       });
-
       this.init();
     },
   },
@@ -75,24 +75,26 @@ Component({
       this.setData({
         level: this.data.level + 1,
         duration: new Date().getTime() - this.data.start,
+        showAnswer: false, // 重置答案显示状态
       });
     },
 
-    // 玩家选择选项处理函数
     chooseHandle(e: { currentTarget: { dataset: { index: number } } }) {
       // 获取玩家选择的选项索引
       const chosenIndex = e.currentTarget.dataset.index;
+      const correctIndex = this.data.levels[this.data.level][2];
+      const isCorrect = chosenIndex === correctIndex;
 
-      // 更新选择状态
+      //更新选择状态
       this.setData({
         chosenIndex: chosenIndex,
         isChosen: true,
-        correctIndex: this.data.levels[this.data.level][2], // 当前关卡的正确答案索引
-        isCorrect: chosenIndex == this.data.levels[this.data.level][2], // 判断选择是否正确
+        correctIndex: correctIndex,
+        isCorrect: isCorrect,
       });
 
-      // 根据选择正确与否显示不同的消息提示
-      if (this.data.isCorrect) {
+      //显示提示消息
+      if (isCorrect) {
         Message.success({
           context: this,
           offset: [90, 32],
@@ -119,8 +121,14 @@ Component({
         }
       }
 
-      // 进入下一关
-      this.nextHandle();
+      //显示正确答案
+      setTimeout(() => {
+        this.setData({ showAnswer: true }); // 显示正确答案样式
+
+        setTimeout(() => {
+          this.nextHandle();
+        }, 750);
+      }, 250);
     },
 
     playAudioHandle(e: { currentTarget: { dataset: { text: string } } }) {
@@ -166,6 +174,8 @@ Component({
       this.setData({
         isChosen: false,
         isCorrect: false,
+        chosenIndex: -1, // 重置选择索引
+        correctIndex: -1, // 重置正确答案索引
       });
     },
   },

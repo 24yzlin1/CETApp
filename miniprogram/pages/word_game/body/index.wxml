@@ -78,18 +78,17 @@
         </view>
         <t-cell-group
           theme="card"
-          wx:if="{{!isChosen}}"
         >
-          <t-cell
-            t-class="custom-cell" 
-            bindtap="chooseHandle"
-            bordered="{{false}}"
-            data-index="{{index}}"
-            hover="{{!isChosen}}"
-            title="{{item}}"
-            wx:for="{{levels[level][3]}}"
-            wx:key="option"
-          />
+        <t-cell
+          t-class="{{ showAnswer ? (index === correctIndex ? 'correct-cell' : (index === chosenIndex ? 'wrong-cell' : 'custom-cell')) : 'custom-cell' }}"
+          bindtap="{{!isChosen ? 'chooseHandle' : ''}}"
+          bordered="{{false}}"
+          data-index="{{index}}"
+          hover="{{!isChosen}}"
+          title="{{item}}"
+          wx:for="{{levels[level][3]}}"
+          wx:key="option"
+        />
         </t-cell-group>
       </view>
     </view>
