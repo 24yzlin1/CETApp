@@ -1,5 +1,4 @@
 // 导入相关模块和类型
-import { Message } from "tdesign-miniprogram"; // 引入UI组件库的消息提示组件
 import { GameLevelData, MistakeData, WordCard } from "../../../utils/type"; // 引入单词卡片类型定义
 import { playAudio, WordIndexUtil } from "../../../utils/util"; // 引入单词索引工具类
 
@@ -26,6 +25,12 @@ Component({
     start: 0, // 游戏开始时间戳
     duration: 0, // 游戏进行时间（毫秒）
     isShowPopup: false, // 是否显示弹窗
+    showAnswer: false, // 显示正确答案
+
+    // 消息提示状态
+    showTips: false,
+    tipsContent: "",
+    tipsType: "",
   },
 
   // 组件生命周期
@@ -38,7 +43,6 @@ Component({
       this.setData({
         cards: app.tempData.wordGame.cards,
       });
-
       this.init();
     },
   },
@@ -75,36 +79,37 @@ Component({
       this.setData({
         level: this.data.level + 1,
         duration: new Date().getTime() - this.data.start,
+        showAnswer: false, // 重置答案显示状态
+        showTips: false,
       });
     },
 
-    // 玩家选择选项处理函数
     chooseHandle(e: { currentTarget: { dataset: { index: number } } }) {
-      // 获取玩家选择的选项索引
+      //获取玩家选项
       const chosenIndex = e.currentTarget.dataset.index;
+      const correctIndex = this.data.levels[this.data.level][2];
+      const isCorrect = chosenIndex === correctIndex;
 
-      // 更新选择状态
+      //更新选择状态
       this.setData({
         chosenIndex: chosenIndex,
         isChosen: true,
-        correctIndex: this.data.levels[this.data.level][2], // 当前关卡的正确答案索引
-        isCorrect: chosenIndex == this.data.levels[this.data.level][2], // 判断选择是否正确
+        correctIndex: correctIndex,
+        isCorrect: isCorrect,
       });
 
-      // 根据选择正确与否显示不同的消息提示
-      if (this.data.isCorrect) {
-        Message.success({
-          context: this,
-          offset: [90, 32],
-          content: "恭喜，答对啦，继续保持哦！",
-          closeBtn: true,
+      //显示提示消息
+      if (isCorrect) {
+        this.setData({
+          showTips: true,
+          tipsContent: "恭喜，答对啦，继续保持哦！",
+          tipsType: "success",
         });
       } else {
-        Message.error({
-          context: this,
-          offset: [90, 32],
-          content: "很可惜，这次没选对，再试试看吧！",
-          closeBtn: true,
+        this.setData({
+          showTips: true,
+          tipsContent: "很可惜，这次没选对，再试试看吧！",
+          tipsType: "error",
         });
 
         if (this.data.mode === 1) {
@@ -119,8 +124,15 @@ Component({
         }
       }
 
-      // 进入下一关
-      this.nextHandle();
+      //显示正确答案
+      setTimeout(() => {
+        this.setData({ showAnswer: true });
+
+        setTimeout(() => {
+          this.setData({ showTips: false });
+          this.nextHandle();
+        }, 850);
+      }, 150);
     },
 
     playAudioHandle(e: { currentTarget: { dataset: { text: string } } }) {
@@ -133,12 +145,15 @@ Component({
       this.setData({ mode: e.detail.value });
 
       // 显示修改成功提示
-      Message.success({
-        context: this,
-        offset: [90, 32], // 提示框位置偏移
-        content: "修改成功！",
-        closeBtn: true, // 显示关闭按钮
+      this.setData({
+        showTips: true,
+        tipsContent: "修改成功！",
+        tipsType: "success",
       });
+
+      setTimeout(() => {
+        this.setData({ showTips: false });
+      }, 1000);
 
       // 隐藏弹窗
       this.popupHideHandle();
@@ -166,6 +181,8 @@ Component({
       this.setData({
         isChosen: false,
         isCorrect: false,
+        chosenIndex: -1, // 重置选择索引
+        correctIndex: -1, // 重置正确答案索引
       });
     },
   },
