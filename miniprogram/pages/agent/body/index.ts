@@ -172,8 +172,6 @@ Component({
 
 async function callLlm(history: ChatMessage[]): Promise<ChatMessage> {
   const app = getApp();
-  let response: any;
-  let error: string = "";
 
   if (app.globalData.user.llmUrl === "debug") {
     await new Promise((r) => setTimeout(r, 1000));
@@ -205,25 +203,32 @@ async function callLlm(history: ChatMessage[]): Promise<ChatMessage> {
     ];
   }
 
-  wx.request({
-    url: app.globalData.user.llmUrl + "/chat/completions",
-    method: "POST",
-    header: {
-      Authorization: "Bearer " + app.globalData.user.llmKey,
-      "Content-Type": "application/json",
-    },
-    data: {
-      model: app.globalData.user.llmModel,
-      messages: history,
-    },
-    success: (x) => (response = x.data),
-    fail: (x) => (error = x.errMsg),
+  return new Promise((r) => {
+    wx.request({
+      url: app.globalData.user.llmUrl + "/chat/completions",
+      method: "POST",
+      header: {
+        Authorization: "Bearer " + app.globalData.user.llmKey,
+        "Content-Type": "application/json",
+      },
+      data: {
+        model: app.globalData.user.llmModel,
+        messages: history.map((x) => {
+          return {
+            role: x[0],
+            content: x[1],
+          };
+        }),
+      },
+      success: (x: any) => {
+        const content = x.data?.choices?.[0]?.message?.content || "";
+        r(["assistant", content]);
+      },
+      fail: (x) => {
+        r(["assistant", "请求失败：" + x.errMsg]);
+      },
+    });
   });
-
-  return [
-    "assistant",
-    response !== undefined ? response.choices[0].message.content : error,
-  ];
 }
 
 async function updateMemory(
