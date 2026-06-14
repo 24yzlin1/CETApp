@@ -1,0 +1,140 @@
+<!-- 可爱顶部标题 -->
+<view class="page-header">
+  <view class="header-back" bindtap="backHandle">
+    <t-icon name="chevron-left" size="36rpx" color="#7c4dff" />
+  </view>
+  <view class="header-info">
+    <text class="header-emoji">✨</text>
+    <view class="header-text">
+      <text class="header-title">AI 英语助手</text>
+      <text class="header-subtitle">陪你轻松学英语 ~</text>
+    </view>
+  </view>
+  <view class="header-menu" bindtap="popupShowHandle">
+    <t-icon name="textformat-shorter" size="36rpx" color="#7c4dff" />
+  </view>
+</view>
+
+<t-popup
+  bind:visible-change="popupHideHandle"
+  placement="bottom"
+  style="height: 75vh;"
+  visible="{{isShowPopup}}"
+>
+  <view class="popup-header">
+    <view class="popup-title">概览</view>
+  </view>
+
+  <scroll-view
+    scroll-y="{{true}}"
+    style="height: calc(100% - 116rpx);"
+    wx:if="{{isShowPopup}}"
+  >
+    <t-cell
+      bordered="{{false}}"
+      catchtap="showMemoryHandle"
+      description="{{isShowMemory?agentMemory:'单击展开'}}"
+      hover="{{true}}"
+      left-icon="robot"
+      title="记忆"
+    >
+      <t-button
+        catchtap="resetMemoryHandle"
+        icon="rotate"
+        shape="circle"
+        slot="right-icon"
+        theme="danger"
+        variant="text"
+      />
+    </t-cell>
+    <t-divider
+      align="left"
+      content="对话历史"
+      dashed="{{true}}"
+    />
+    <t-cell
+      bordered="{{false}}"
+      catchtap="changeSessionHandle"
+      data-target="{{index}}"
+      description="{{item[1]}}"
+      hover="{{true}}"
+      left-icon="chat-bubble"
+      title="{{item[0]}}"
+      wx:for="{{sessions}}"
+      wx:key="title"
+    />
+  </scroll-view>
+  <t-fab>
+    <view class="fab">
+      <t-button
+        bindtap="removeSessionHandle"
+        icon="delete"
+        shape="circle"
+        size="large"
+        theme="danger"
+      ></t-button>
+      <t-button
+        bindtap="newChatHandle"
+        icon="add"
+        shape="circle"
+        size="large"
+      ></t-button>
+    </view>
+  </t-fab>
+</t-popup>
+
+<view class="page">
+  <view class="page-body">
+    <view wx:if="{{history.length===1}}">
+      <view class="placeholder">
+        <t-result
+          description="请输入你的学习需求，即刻开始对话"
+          icon="cat"
+          theme="default"
+          title="陪你轻松学英语～"
+        />
+      </view>
+      <t-cell
+        bordered="{{false}}"
+        catchtap="exampleTapHandle"
+        data-target="{{index}}"
+        hover="{{true}}"
+        left-icon="gesture-right"
+        title="{{item}}"
+        wx:for="{{exampleInput}}"
+        wx:key="title"
+        custom-class="example-cell"
+      />
+    </view>
+    <view class="chat-body">
+      <view
+        wx:for="{{historyDisplay}}"
+        wx:key="history"
+      >
+        <t-chat-message
+          content="{{item.content}}"
+          placement="{{item.role==='user'?'right':'left'}}"
+          role="{{item.role}}"
+          wx:if="{{item.role!=='system'}}"
+        ></t-chat-message>
+      </view>
+      <t-chat-message
+        animation="moving"
+        placement="left"
+        role="assistant"
+        status="pending"
+        wx:if="{{loading}}"
+      ></t-chat-message>
+    </view>
+    <view class="chat-input">
+      <t-chat-sender
+        bind:change="inputChangeHandle"
+        bind:send="sendHandle"
+        bind:uploadClick="newChatHandle"
+        loading="{{loading}}"
+        render-presets="{{[{name:'send',type:'icon'}]}}"
+        value="{{inputText}}"
+      />
+    </view>
+  </view>
+</view>
