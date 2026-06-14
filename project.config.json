@@ -1,5 +1,5 @@
 {
-  "description": "项目配置文件",
+  "description": "CETApp - 四六级英语学习小程序",
   "miniprogramRoot": "miniprogram/",
   "compileType": "miniprogram",
   "setting": {
@@ -9,7 +9,6 @@
       "disablePlugins": [],
       "outputPath": ""
     },
-    "coverView": false,
     "postcss": false,
     "minified": true,
     "enhance": true,
@@ -21,10 +20,9 @@
       }
     ],
     "ignoreUploadUnusedFiles": true,
-    "compileHotReLoad": false,
-    "skylineRenderEnable": true,
+    "compileHotReLoad": true,
+    "skylineRenderEnable": false,
     "es6": true,
-    "compileWorklet": false,
     "uglifyFileName": false,
     "uploadWithSourceMap": true,
     "packNpmManually": true,
@@ -44,10 +42,11 @@
     "tabIndent": "insertSpaces",
     "tabSize": 2
   },
-  "libVersion": "trial",
+  "libVersion": "3.10.2",
   "packOptions": {
     "ignore": [],
     "include": []
   },
-  "appid": ""
+  "appid": "wx",
+  "projectname": "CETApp"
 }
