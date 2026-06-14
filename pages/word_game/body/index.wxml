@@ -1,0 +1,81 @@
+<t-message id="t-message" />
+<t-popup
+  bind:visible-change="popupHideHandle"
+  placement="bottom"
+  style="height: 75vw;"
+  visible="{{isShowPopup}}"
+>
+  <view class="popup-header">
+    <view class="popup-title">游戏模式</view>
+  </view>
+  <view>
+    <t-radio-group
+      bindchange="optionChangeHandle"
+      borderless="{{true}}"
+      icon="dot"
+      options="{{modeOptions}}"
+      value="{{mode}}"
+    />
+  </view>
+</t-popup>
+<view class="page">
+  <t-navbar
+    left-arrow="{{true}}"
+    title="词义对对碰"
+  />
+  <view class="page-body">
+    <view wx:if="{{level===-1}}">
+      <view class="game-start">
+        <t-button bindtap="modeHandle">{{modeOptions[mode].label}}</t-button>
+        <t-button
+          bindtap="nextHandle"
+          theme="primary"
+        >开始</t-button>
+      </view>
+    </view>
+    <view wx:elif="{{level===total}}">
+      <result
+        cards="{{levelCards}}"
+        title="游戏"
+        todo="闯关"
+      />
+      <table
+        bodys="{{[duration/1000+'秒',correct]}}"
+        headers="{{['消耗时间','正确个数']}}"
+      />
+    </view>
+    <view wx:else>
+      <view class="progress-slider">
+        <t-slider
+          max="{{total-1}}"
+          theme="capsule"
+          value="{{level}}"
+        />
+      </view>
+      <view class="game-card">
+        <view
+          bind:tap="playAudioHandle"
+          class="game-card-english"
+          data-text="{{levels[level][1][1][0]}}"
+        >
+          <view class="english-word">{{levels[level][1][1][0]}}</view>
+          <view class="english-pronunciation">{{levels[level][1][1][1]}}</view>
+        </view>
+        <t-cell-group
+          theme="card"
+          wx:if="{{!isChosen}}"
+        >
+          <t-cell
+            bindtap="chooseHandle"
+            bordered="{{false}}"
+            data-index="{{index}}"
+            hover="{{!isChosen}}"
+            title="{{item}}"
+            wx:for="{{levels[level][3]}}"
+            wx:key="option"
+          />
+        </t-cell-group>
+      </view>
+    </view>
+  </view>
+</view>
