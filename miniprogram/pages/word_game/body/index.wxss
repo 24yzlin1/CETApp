@@ -39,17 +39,17 @@
 }
 
 .correct-cell {
-  background-color: rgba(72, 187, 120, 0.5) !important;
+  background-color: rgba(72, 187, 120, 0.7) !important;
   color: white;
 }
 
 .wrong-cell {
-  background-color: rgba(245, 108, 108, 0.5) !important;
+  background-color: rgba(245, 108, 108, 0.7) !important;
   color: white;
 }
 
 .custom-cell {
-  background-color: rgba(255, 255, 255, 0.5) !important;
+  background-color: rgba(255, 255, 255, 0.7) !important;
 }
 
 .popup-header {
