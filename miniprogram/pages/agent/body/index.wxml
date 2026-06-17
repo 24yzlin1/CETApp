@@ -1,3 +1,24 @@
+<view class="page-header">
+  <view class="header-left-group">
+    <view class="header-back" bindtap="backHandle">
+      <t-icon name="chevron-left" size="36rpx" color="#7c4dff" />
+    </view>
+    <view class="header-menu" bindtap="popupShowHandle">
+      <t-icon name="textformat-shorter" size="36rpx" color="#7c4dff" />
+    </view>
+  </view>
+
+  <view class="header-info">
+    <text class="header-emoji">✨</text>
+    <view class="header-text">
+      <text class="header-title">AI 英语助手</text>
+      <text class="header-subtitle">陪你轻松学英语 ~</text>
+    </view>
+  </view>
+
+  <view class="header-empty"></view>
+</view>
+
 <t-popup
   bind:visible-change="popupHideHandle"
   placement="bottom"
@@ -65,28 +86,8 @@
     </view>
   </t-fab>
 </t-popup>
+
 <view class="page">
-  <t-navbar left-arrow="{{false}}">
-    <view
-      class="capsule"
-      slot="capsule"
-    >
-      <t-icon
-        aria-role="button"
-        bind:tap="backHandle"
-        class="capsule-icon"
-        name="chevron-left"
-        size="48rpx"
-      />
-      <t-icon
-        aria-role="button"
-        bind:tap="popupShowHandle"
-        class="capsule-icon"
-        name="textformat-shorter"
-        size="48rpx"
-      />
-    </view>
-  </t-navbar>
   <view class="page-body">
     <view wx:if="{{history.length===1}}">
       <view class="placeholder">
@@ -106,6 +107,7 @@
         title="{{item}}"
         wx:for="{{exampleInput}}"
         wx:key="title"
+        custom-class="example-cell"
       />
     </view>
     <view class="chat-body">
@@ -123,7 +125,7 @@
       <t-chat-message
         animation="moving"
         placement="left"
-        role="assistent"
+        role="assistant"
         status="pending"
         wx:if="{{loading}}"
       ></t-chat-message>

@@ -1,35 +1,6 @@
 <view class="page">
   <t-navbar left-arrow="{{true}}" />
   <view class="page-body">
-  <view class="mistake-banner">
-  <view class="banner-content">
-    <view class="banner-title">📚 错题本</view>
-    <view class="banner-subtitle">
-      查漏补缺 · 巩固提升
-    </view>
-
-    <view class="banner-count">
-      {{mistake.length}} 条待复习
-    </view>
-  </view>
-</view>
-
-<view class="mistake-stats">
-  <view class="stat-card">
-    <view class="stat-icon">🔥</view>
-    <view class="stat-text">今日复习</view>
-  </view>
-
-  <view class="stat-card">
-    <view class="stat-icon">🎯</view>
-    <view class="stat-text">正确率</view>
-  </view>
-
-  <view class="stat-card">
-    <view class="stat-icon">📖</view>
-    <view class="stat-text">错题数</view>
-  </view>
-</view>
     <view
       class="mistake-card"
       wx:for="{{mistake}}"

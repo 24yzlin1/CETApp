@@ -1,4 +1,0 @@
-<view class="result">
-    <t-result theme="success" title="{{todo+'成功'}}" />
-    <t-button bindtap="reviewHandle">回顾</t-button>
-</view>

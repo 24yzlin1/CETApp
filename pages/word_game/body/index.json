@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-    "result": "../../../components/result",
-    "table": "../../../components/table"
-  }
-}
