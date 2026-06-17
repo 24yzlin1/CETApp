@@ -1,0 +1,34 @@
+<view class="page">
+  <t-navbar
+    left-arrow="{{true}}"
+    title="单词成长记"
+  />
+  <view class="page-body">
+    <view
+      class="history-card"
+      wx:for="{{history}}"
+      wx:key="historyItem"
+    >
+      <t-cell-group theme="card">
+        <t-cell>
+          <view
+            class="date"
+            slot="title"
+          >{{item[0]}}</view>
+        </t-cell>
+        <t-cell
+          bindtap="itemTapHandle"
+          bordered="{{false}}"
+          data-index-range="{{item}}"
+          data-list-index="{{index}}"
+          hover="{{true}}"
+          note="{{item[1]-item[0]+'个'}}"
+          title="{{wordListTitle[index]}}"
+          wx:for="{{item[1]}}"
+          wx:if="{{item[1]-item[0]!==0}}"
+          wx:key="historyItemRange"
+        ></t-cell>
+      </t-cell-group>
+    </view>
+  </view>
+</view>
