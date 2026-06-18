@@ -61,6 +61,7 @@
         borderless="{{true}}"
         label="密钥"
         value="{{llmKey}}"
+        type="password"
       />
       <t-input
         bindchange="changeLlmModelHandle"
