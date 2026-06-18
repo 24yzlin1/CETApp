@@ -108,6 +108,8 @@
     display: flex;
     align-items: center;
     gap: 0rpx; 
+
+    transform: translateY(20rpx);
   }
   
   .header-empty {
@@ -155,6 +157,7 @@
 
    position: absolute;
    left: 50%;
+ 
    transform: translateX(-50%);
 
 }
