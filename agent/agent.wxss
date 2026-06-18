@@ -1,5 +1,0 @@
-/* 页面级背景 - 穿透到 body 组件 */
-page {
-  background: linear-gradient(160deg, #f8f9ff 0%, #f0f2ff 25%, #f5f0ff 50%, #f0faf5 75%, #f5faff 100%);
-  min-height: 100vh;
-}
