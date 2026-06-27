@@ -1,6 +1,24 @@
 <view class="page">
   <t-navbar left-arrow="{{true}}" />
   <view class="page-body">
+    
+      <view class="banner-content">
+        <view class="banner-title"> 错题本</view>
+        <view class="banner-subtitle">
+          查漏补缺 · 巩固提升
+        </view>
+        <view class="banner-count">
+          {{mistake.length}} 条待复习
+        
+      </view>
+    </view>
+
+    <view class="bg">
+      <!-- 无错题：bg.png；有错题：bg1.png -->
+      <image wx:if="{{mistake.length === 0}}" src="/pages/images/bg.png" mode=""/>
+      <image wx:else src="/pages/images/bg1.png" mode=""/>
+    </view>
+
     <view
       class="mistake-card"
       wx:for="{{mistake}}"
@@ -27,6 +45,7 @@
         ></t-cell>
       </t-cell-group>
     </view>
+
     <t-fab wx:if="{{mistake.length!==0}}">
       <view class="fab">
         <t-button

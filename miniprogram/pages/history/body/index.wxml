@@ -4,12 +4,33 @@
     title="单词成长记"
   />
   <view class="page-body">
+    
+      <view class="growth-title">
+                单词成长记
+      </view>
+      <view class="growth-sub">
+              每一次学习都值得记录
+      </view>
+    
+
+    <view class="dashboard">
+      <view class="bg">
+        <!-- 无历史记录：空白占位 bg.png -->
+        <image wx:if="{{history.length === 0}}" src="/pages/images/bg.png" mode=""/>
+        <!-- 存在历史记录：正常背景 bg1.png -->
+        <image wx:else src="/pages/images/bg1.png" mode=""/>
+      </view>
+    </view>
+
     <view
       class="history-card"
       wx:for="{{history}}"
       wx:key="historyItem"
     >
-      <t-cell-group theme="card">
+      <t-cell-group
+        theme="card"
+        t-class="history-cell-group"
+      >
         <t-cell>
           <view
             class="date"
